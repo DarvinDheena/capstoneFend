@@ -88,7 +88,7 @@ function Signup() {
 
             <Form.Group as={Col}  className="mb-2">
             <Form.Label>Profile</Form.Label>
-            <Form.Control type="file" placeholder="Enter email"
+            <Form.Control type="file" placeholder="Choose Picture"
             name='picture' 
             required
             onChange={(e) =>  setPicture(e.target.files[0]) }/>

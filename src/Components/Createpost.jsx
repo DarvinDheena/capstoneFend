@@ -51,6 +51,7 @@ function Createpost() {
                 <Form.Label className='mt-3'>Image</Form.Label>
                 <Form.Control type="file" 
                 name='picture' 
+                required
                 onChange={(e) =>  setPicture(e.target.files[0]) }/>
             </Form.Group>
             <Button variant="primary" className='mt-4' type="submit">

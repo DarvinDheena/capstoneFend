@@ -30,6 +30,25 @@ function App() {
       console.log(error);
     }
   }
+
+  const getAllPosts = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      await axios.get(`http://localhost:6001/posts`,{
+        headers : {
+          Authorization  : `Bearer ${token}`
+        }
+      })
+        .then((response) => {
+          console.log('posts get')
+          sessionStorage.setItem('posts',JSON.stringify(response.data));
+        })
+    }
+    catch(error) {
+      console.log(error);
+    }
+
+  }
     
   return (
     <div>
@@ -39,7 +58,7 @@ function App() {
           <Route path='/' element ={ <Home />}></Route>
           <Route path='/signup' element ={ <Signup />}></Route>
           <Route path='/signin' element ={ <Signin  />}></Route>
-          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser }/>}></Route>
+          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser } getAllPosts = { getAllPosts }/>}></Route>
           <Route path='/profile' element ={ <ProfilePage getUser={ getUser }/>}></Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>

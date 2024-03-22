@@ -36,8 +36,7 @@ function ProfilePage({ getUser }) {
    
     let  user = sessionStorage.getItem('user');
     user = JSON.parse(user);
-    let  posts = sessionStorage.getItem('posts');
-    posts = JSON.parse(posts);
+   
     const picturePath = user.picturePath ;
     
 

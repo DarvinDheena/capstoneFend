@@ -14,18 +14,18 @@ const  UserImage = ({ picturePath , size }) => {
   )
 }
 
-const PostImage = ({ picturePath , size}) => {
-    return (
-        // <Container> 
-        // <Col xs={6} md={4}>
-         <Image src= {`http://localhost:6001/assets/${picturePath}`} roundedCircle
-         width={size}
-         height={size}
-         alt='User Profile' />
-      //  </Col>
-  //  </Container>
-    )
+// const PostImage = ({ picturePath , size}) => {
+//     return (
+//         // <Container> 
+//         // <Col xs={6} md={4}>
+//          <Image src= {`http://localhost:6001/assets/${picturePath}`} roundedCircle
+//          width={size}
+//          height={size}
+//          alt='User Profile' />
+//       //  </Col>
+//   //  </Container>
+//     )
    
-}
+// }
 
-export default ( UserImage, PostImage );
+export default ( UserImage );
