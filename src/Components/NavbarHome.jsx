@@ -12,16 +12,13 @@ function NavbarHome() {
   const handleLogout = () =>{
     // remove the user from the session storage
     sessionStorage.removeItem('user');
-    // remove the user from the redux store
-    dispatch({
-        type: 'UNSET_USER',
-    });
 
     // remove the token from the session storage
     sessionStorage.removeItem('token');
 
     // redirect to the login page
-    navigate('/signin');
+    window.alert('Logged Out Successfully')
+    navigate('/');
   }
   useEffect(()=>{
   } ,[])

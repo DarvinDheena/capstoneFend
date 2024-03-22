@@ -19,6 +19,7 @@ function Signup() {
   })
   const [ picture,setPicture] = useState('');
   const handleBtnClick = async (event) => {
+    console.log(picture);
     event.preventDefault();
     const formData = new FormData();
         formData.append('picture', picture )
