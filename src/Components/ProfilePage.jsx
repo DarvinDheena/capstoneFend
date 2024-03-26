@@ -25,7 +25,6 @@ function ProfilePage({ getUser }) {
           })
     }
 
-   
     useEffect(()=>{
         getUser();
         getUserPosts();

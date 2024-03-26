@@ -4,9 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-function Createpost() {
+function Createpost({ getAllposts }) {
     const [ description , setDescription ] = useState('');
     const [ picture , setPicture ] = useState('');
+
     const handleCreatePost = async (event) => {
         event.preventDefault();
         console.log(picture);
@@ -31,10 +32,12 @@ function Createpost() {
                     sessionStorage.setItem('posts',posts);
                     setDescription('');
                     setPicture('');
+                    window.alert('Post postsed Successfully')
                 })
         } catch (error) {
             console.log(error);
         }
+
     }
   return (
     <div>

@@ -30,7 +30,7 @@ function Signin() {
               })
               window.alert('logged in successfully')
               // redirect to dashboard page
-              navigate('/');
+              navigate('/dashboard');
         })
     } catch (error) {
       console.log(error);
