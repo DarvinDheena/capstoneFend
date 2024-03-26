@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import config from '../config';
 
 function Signin() {
   const [ email , setEmail ] = useState('');
@@ -16,7 +17,7 @@ function Signin() {
     event.preventDefault();
     // lets sign in user
     try {
-      await axios.post(`http://localhost:6001/auth/login` , {
+      await axios.post(`${ config.API_URL}/auth/login` , {
         email : email ,
         password : password 
       })

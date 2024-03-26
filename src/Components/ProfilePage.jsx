@@ -5,29 +5,27 @@ import Createpost from './Createpost';
 import UserImage from './UserImage';
 
 function ProfilePage({ getUser }) {
-    const dispatch = useDispatch();
 
-    const getUserPosts = async () =>{
-        let user = sessionStorage.getItem('user');
-        const token = sessionStorage.getItem('token');
-        user = JSON.parse(user);
-        const userId = user._id;
-        await axios.get(`http://localhost:6001/posts/${userId}/`,{
-            headers : {
-              Authorization  : `Bearer ${token}`
-            }
-          })
-          .then((posts)=>{
-            dispatch({
-                type: 'SET_USER_POSTS',
-                payload: posts
-            });
-          })
-    }
+    // const getUserPosts = async () =>{
+    //     let user = sessionStorage.getItem('user');
+    //     const token = sessionStorage.getItem('token');
+    //     user = JSON.parse(user);
+    //     const userId = user._id;
+    //     await axios.get(`${config.API_URL}/posts/${userId}/`,{
+    //         headers : {
+    //           Authorization  : `Bearer ${token}`
+    //         }
+    //       })
+    //       .then((posts)=>{
+    //         dispatch({
+    //             type: 'SET_USER_POSTS',
+    //             payload: posts
+    //         });
+    //       })
+    // }
 
     useEffect(()=>{
         getUser();
-        getUserPosts();
     },[]);
 
     // const user = useSelector(state => state.user);

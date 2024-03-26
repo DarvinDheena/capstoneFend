@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function Signup() {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Signup() {
         formData.append('picturePath',picture.name);
 
 
-      await axios.post('http://localhost:6001/auth/register',formData)
+      await axios.post(`${ config.API_URL}/auth/register`,formData)
             .then((response) => { 
                         window.alert('User Registered successfully ');
                         navigate('/signin');

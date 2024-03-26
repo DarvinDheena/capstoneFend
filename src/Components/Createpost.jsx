@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import config from '../config';
 
 function Createpost({ getAllposts }) {
     const [ description , setDescription ] = useState('');
@@ -22,7 +23,7 @@ function Createpost({ getAllposts }) {
             formData.append('description' , description);
         try {
             
-            await axios.post(`http://localhost:6001/create`,formData ,{
+            await axios.post(`${config.API_URL}/create`,formData ,{
              headers : {
                     Authorization  : `Bearer ${token}`
                   }

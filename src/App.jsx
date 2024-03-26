@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProfilePage from './Components/ProfilePage';
 import NavbarHome from './Components/NavbarHome';
 import axios from 'axios';
+import config from './config';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       const token = sessionStorage.getItem('token');
       user = JSON.parse(user) 
       if (user) {
-        await axios.get(`http://localhost:6001/users/${user._id}`,{
+        await axios.get(`${config.API_URL}/users/${user._id}`,{
           headers : {
             Authorization : `Bearer ${token}`
           } }) 
@@ -34,7 +35,7 @@ function App() {
   const getAllPosts = async () => {
     try {
       const token = sessionStorage.getItem('token');
-      await axios.get(`http://localhost:6001/posts`,{
+      await axios.get(`${config.API_URL}/posts`,{
         headers : {
           Authorization  : `Bearer ${token}`
         }
