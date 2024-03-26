@@ -30,7 +30,7 @@ function NavbarHome() {
           <Nav className="ms-auto">        
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link href="/signup">Register</Nav.Link>  
+            <Nav.Link href="https://fabulous-mandazi-911e58.netlify.app/signup">Register</Nav.Link>  
             <Nav.Link href="/signin" >Sign In</Nav.Link> 
             <Nav.Link href='/dashboard'>Dashboard</Nav.Link>
             <Nav.Link onClick={ handleLogout }>LogOut</Nav.Link>

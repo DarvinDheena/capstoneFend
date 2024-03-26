@@ -57,7 +57,7 @@ function App() {
       <NavbarHome/>
         <Routes>
           <Route path='/' element ={ <Home />}></Route>
-          <Route path='/signup' element ={ <Signup />}></Route>
+          <Route path='https://fabulous-mandazi-911e58.netlify.app/signup' element ={ <Signup />}></Route>
           <Route path='/signin' element ={ <Signin  />}></Route>
           <Route path='/dashboard' element ={ <Dashboard getUser = { getUser } getAllPosts = { getAllPosts }/>}></Route>
           <Route path='/profile' element ={ <ProfilePage getUser={ getUser }/>}></Route>
