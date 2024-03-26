@@ -3,6 +3,7 @@ import Createpost from './Createpost';
 import axios from 'axios';
 import UserImage from './UserImage';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function Dashboard({ getUser , getAllPosts }) {
   const [comment , setComment ] = useState('');
@@ -89,7 +90,7 @@ function Dashboard({ getUser , getAllPosts }) {
                       <div>
                         <p id='mydes' className='h-des mb-0 text-start' >{ post.description }</p>
                       </div>
-                        <img src={`http://localhost:6001/assets/${post.picturePath}`} className='img-fluid' alt="" key={posts._id}/>
+                        <img src={`${config.API_URL}/assets/${post.picturePath}`} className='img-fluid' alt="" key={posts._id}/>
                       </div>
                       <ul className='list-unstyled d-flex align-items-center mt-3'>
                       <li  onClick={()=>handleLike(post._id)} key={post._id + "like"}>                  
