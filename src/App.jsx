@@ -4,7 +4,6 @@ import Home from './Components/Home';
 import Signup from './Components/Signup';
 import Signin from './Components/Signin';
 import Dashboard from './Components/Dashboard';
-import { useDispatch, useSelector } from 'react-redux';
 import ProfilePage from './Components/ProfilePage';
 import NavbarHome from './Components/NavbarHome';
 import axios from 'axios';
@@ -12,6 +11,8 @@ import config from './config';
 
 
 function App() {
+
+  const [ isLogin , setIsLogin ] = useState(false);
 
   const getUser = async () =>{
     try {

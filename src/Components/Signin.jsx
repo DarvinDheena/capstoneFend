@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,7 +9,6 @@ function Signin() {
   const [ email , setEmail ] = useState('');
   const [password , setPassword ] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
 
   const handleLogin = async (event) => {
@@ -24,11 +22,6 @@ function Signin() {
         .then((res) => {
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('user', JSON.stringify( res.data.user ));
-              // Store the User in Redux Store
-              dispatch({
-                type: 'SET_USER',
-                payload: res.data 
-              })
               window.alert('logged in successfully')
               // redirect to dashboard page
               navigate('/dashboard');

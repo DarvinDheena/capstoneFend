@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import config from '../config';
 
-function Createpost({ getAllposts }) {
+function Createpost() {
     const [ description , setDescription ] = useState('');
     const [ picture , setPicture ] = useState('');
 

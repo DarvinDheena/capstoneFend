@@ -19,9 +19,7 @@ function NavbarHome() {
     window.alert('Logged Out Successfully')
     navigate('/');
   }
-  useEffect(()=>{
-  } ,[])
-  
+
   return (
     <div>
         <Navbar bg="primary" data-bs-theme="dark" className='text-bg-dark p-3'>

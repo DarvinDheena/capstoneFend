@@ -76,8 +76,6 @@ function Dashboard({ getUser , getAllPosts }) {
         </div>
         <div className="col-6 h-post">
           <div className="p-3 py-4 bg-white">     
-            
-            {/* post img */}
               {
                 posts.map(post=>{
                   return(  
