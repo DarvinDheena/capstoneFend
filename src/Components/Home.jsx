@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import config from '../config';
 
 function Home() {
   
@@ -13,7 +14,7 @@ function Home() {
           <p className='py-4 fs-5 col-10'>Already  have an account ! please <a href='/signin' className='btn btn-primary'>Signin</a> </p>   
         </div>
         <div className="col">
-          <img src="../src\assets\banner.webp" className='img-fluid' alt="banner" />
+          <img src={`${config.API_URL}/assets/banner.webp`} className='img-fluid' alt="banner" />
         </div>
       </div>
     </div>
