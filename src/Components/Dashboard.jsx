@@ -19,7 +19,6 @@ const  Dashboard =  ({ getUser })  => {
         }
       })
         .then((response) => {
-          console.log('posts get',response);
           sessionStorage.setItem('posts',JSON.stringify(response.data));
         })
     }
@@ -33,7 +32,7 @@ const  Dashboard =  ({ getUser })  => {
    const userId = user._id ;
    const token = sessionStorage.getItem('token');
 
-   await axios.patch(`http://localhost:6001/posts/${id}/like`,{userId : userId } , {
+   await axios.patch(`${config.API_URL}/posts/${id}/like`,{userId : userId } , {
     headers : {
            Authorization  : `Bearer ${token}`
          }
@@ -51,7 +50,7 @@ const  Dashboard =  ({ getUser })  => {
   }
   const handleComment = async(id) => {
     const token = sessionStorage.getItem('token');
-    await axios.patch(`http://localhost:6001/posts/${id}/comment`,{ newComment : comment } , {
+    await axios.patch(`${config.API_URL}/posts/${id}/comment`,{ newComment : comment } , {
       headers : {
             Authorization  : `Bearer ${token}`
           }
@@ -68,7 +67,7 @@ const  Dashboard =  ({ getUser })  => {
   user = JSON.parse(user);
   const picturePath = user.picturePath ;
   let posts = sessionStorage.getItem('posts');
-  posts = JSON.parse(posts);  
+  posts = JSON.parse(posts); 
 
   setTimeout(()=>{
     setViewPosts(false);
@@ -126,18 +125,18 @@ const  Dashboard =  ({ getUser })  => {
                       <button className='btn btn-primary mt-3' onClick={() => handleComment(post._id)}>send</button>
                       <ul >
                         {
-                          posts.map(post=>{
+                          posts.map((post,index)=>{
+                            console.log(index);
                             const comments = post.comments ;
                             return (
-                              <>
+                              <div key={index}>
                                   { comments.map((comment ,index)=> {
                                   return(
-                                    <>
                                       <li key={index}> { comment }</li>
-                                    </>)
+                                      )
                                 })
                               }
-                              </>
+                              </div>
                             )
                           })
                         }
