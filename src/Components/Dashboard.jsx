@@ -64,7 +64,6 @@ const  Dashboard =  ({ getUser })  => {
   }
 
   getAllPosts();
-
   let  user = sessionStorage.getItem('user');
   user = JSON.parse(user);
   const picturePath = user.picturePath ;

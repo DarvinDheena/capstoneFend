@@ -5,14 +5,12 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import config from '../config';
 
-function Createpost() {
+function Createpost({  getAllPosts }) {
     const [ description , setDescription ] = useState('');
     const [ picture , setPicture ] = useState('');
 
     const handleCreatePost = async (event) => {
         event.preventDefault();
-        console.log(picture);
-
         let user = sessionStorage.getItem('user');
         let token = sessionStorage.getItem('token');
         user = JSON.parse(user);
@@ -29,11 +27,14 @@ function Createpost() {
                   }
             })
                 .then((posts) =>{
-                    console.log(posts);
-                    sessionStorage.setItem('posts',posts);
-                    setDescription('');
-                    setPicture('');
-                    window.alert('Post postsed Successfully')
+                    setTimeout(()=>{
+                        console.log(posts);
+                        sessionStorage.setItem('posts',JSON.stringify(posts));
+                        setDescription('');
+                        setPicture('');
+                        getAllPosts();
+                        window.alert('Post postsed Successfully')
+                    },1200)
                 })
         } catch (error) {
             console.log(error);
