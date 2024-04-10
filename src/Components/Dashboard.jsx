@@ -5,7 +5,7 @@ import UserImage from './UserImage';
 import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
-function Dashboard({ getUser , isLogin}) {
+async function Dashboard({ getUser , isLogin}) {
   const [comment , setComment ] = useState('');
   const navigate = useNavigate();
 
@@ -28,8 +28,8 @@ function Dashboard({ getUser , isLogin}) {
 
   }
 
-    getUser();
-    getAllPosts();
+   await  getUser();
+   await  getAllPosts();
  
   
 
@@ -131,12 +131,14 @@ function Dashboard({ getUser , isLogin}) {
                             {
                               posts.map(post=>{
                                 const comments = post.comments ;
+                                console.log(comments);
                                 return (
                                   <>
-                                     { comments.map(comment => {
+                                     { comments.map((comment ,index)=> {
+                                      console.log();
                                       return(
                                         <>
-                                          <li key={post._id}> { comment }</li>
+                                          <li key={index}> { comment }</li>
                                         </>)
                                     })
                                   }
@@ -156,7 +158,6 @@ function Dashboard({ getUser , isLogin}) {
                     })
                   }
                 </> : <><h3> posts are loading ... please wait </h3> </>
-                
               }
           </div>
         </div>
