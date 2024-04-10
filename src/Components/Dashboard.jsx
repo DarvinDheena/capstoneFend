@@ -28,9 +28,8 @@ function Dashboard({ getUser , isLogin}) {
 
   }
   
-  useEffect ( () => {
-    getUser();
-} ,[]);
+  getUser();
+  getAllPosts();
 
   let  user = sessionStorage.getItem('user');
   user = JSON.parse(user);
