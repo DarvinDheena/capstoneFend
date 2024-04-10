@@ -13,6 +13,7 @@ import config from './config';
 function App() {
 
   const [ isLogin , setIsLogin ] = useState(false);
+  console.log(isLogin);
 
   const getUser = async () =>{
     try {
@@ -33,24 +34,7 @@ function App() {
     }
   }
 
-  const getAllPosts = async () => {
-    try {
-      const token = sessionStorage.getItem('token');
-      await axios.get(`${config.API_URL}/posts`,{
-        headers : {
-          Authorization  : `Bearer ${token}`
-        }
-      })
-        .then((response) => {
-          console.log('posts get')
-          sessionStorage.setItem('posts',JSON.stringify(response.data));
-        })
-    }
-    catch(error) {
-      console.log(error);
-    }
-
-  }
+ 
     
   return (
     <div>
@@ -60,7 +44,7 @@ function App() {
           <Route path='/' element ={ <Home />}></Route>
           <Route path='/signup' element ={ <Signup />}></Route>
           <Route path='/signin' element ={ <Signin  setIsLogin = { setIsLogin }/>}></Route>
-          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser } getAllPosts = { getAllPosts } isLogin = { isLogin }/>}></Route>
+          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser }  isLogin = { isLogin }/>}></Route>
           <Route path='/profile' element ={ <ProfilePage getUser={ getUser }/>}></Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>

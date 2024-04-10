@@ -5,25 +5,38 @@ import UserImage from './UserImage';
 import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
-function Dashboard({ getUser , getAllPosts , isLogin}) {
+function Dashboard({ getUser , isLogin}) {
   const [comment , setComment ] = useState('');
   const navigate = useNavigate();
-  console.log(isLogin);
 
+  const getAllPosts = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      await axios.get(`${config.API_URL}/posts`,{
+        headers : {
+          Authorization  : `Bearer ${token}`
+        }
+      })
+        .then((response) => {
+          console.log('posts get',response);
+          sessionStorage.setItem('posts',JSON.stringify(response.data));
+        })
+    }
+    catch(error) {
+      console.log(error);
+    }
+
+  }
   
   useEffect ( () => {
     getUser();
-    getAllPosts();
 } ,[]);
 
   let  user = sessionStorage.getItem('user');
   user = JSON.parse(user);
   const picturePath = user.picturePath ;
-  getAllPosts();
   let posts = sessionStorage.getItem('posts');
-  if (posts) {
-    posts = JSON.parse(posts);
-  }
+  posts = JSON.parse(posts);  
 
 
   const  handleLike = async (id) => {    
@@ -60,6 +73,8 @@ function Dashboard({ getUser , getAllPosts , isLogin}) {
     })
     navigate('/dashboard');
   }
+
+
   return (
     <div className='container'>
       <div className='row h-100'>

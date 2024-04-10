@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function NavbarHome({ isLogin ,setIsLogin }) {
   const navigate = useNavigate();
+  console.log(isLogin);
 
   const handleLogout = () =>{
     setIsLogin(false);
@@ -35,7 +36,7 @@ function NavbarHome({ isLogin ,setIsLogin }) {
               <Nav.Link href="/profile">Profile</Nav.Link> 
               <Nav.Link href='/dashboard'>Dashboard</Nav.Link>
               <Nav.Link onClick={ handleLogout }>LogOut</Nav.Link>   
-            </> : 
+            </> :  
             <>
             </> 
           }       
