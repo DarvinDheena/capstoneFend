@@ -12,9 +12,6 @@ import config from './config';
 
 function App() {
 
-  const [ isLogin , setIsLogin ] = useState(false);
-  console.log(isLogin);
-
   const getUser = async () =>{
     try {
       let  user = sessionStorage.getItem('user');
@@ -32,19 +29,16 @@ function App() {
     catch (error) {
       console.log(error);
     }
-  }
-
- 
-    
+  }    
   return (
     <div>
       <Router>
-      <NavbarHome isLogin = { isLogin } setIsLogin = { setIsLogin }/>
+      <NavbarHome />
         <Routes>
           <Route path='/' element ={ <Home />}></Route>
           <Route path='/signup' element ={ <Signup />}></Route>
-          <Route path='/signin' element ={ <Signin  setIsLogin = { setIsLogin }/>}></Route>
-          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser }  isLogin = { isLogin }/>}></Route>
+          <Route path='/signin' element ={ <Signin  />}></Route>
+          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser }  />}></Route>
           <Route path='/profile' element ={ <ProfilePage getUser={ getUser }/>}></Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>

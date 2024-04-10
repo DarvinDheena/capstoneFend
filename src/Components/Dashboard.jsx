@@ -152,9 +152,7 @@ const  Dashboard =  ({ getUser })  => {
                 </>
                   )
                 })
-            }
-          
-                 
+            }   
           </div>
         </div>
         {/* CREATE POST  */}

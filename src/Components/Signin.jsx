@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import config from '../config';
 
-function Signin({ setIsLogin }) {
+function Signin() {
   const [ email , setEmail ] = useState('');
   const [password , setPassword ] = useState('');
   const navigate = useNavigate();
@@ -20,9 +20,9 @@ function Signin({ setIsLogin }) {
         password : password 
       })
         .then((res) => {
-          setIsLogin(true);
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('user', JSON.stringify( res.data.user ));
+            sessionStorage.setItem('login',true);
               window.alert('logged in successfully')
               // redirect to dashboard page
               navigate('/dashboard');
