@@ -55,12 +55,12 @@ function App() {
   return (
     <div>
       <Router>
-      <NavbarHome/>
+      <NavbarHome isLogin = { isLogin } setIsLogin = { setIsLogin }/>
         <Routes>
           <Route path='/' element ={ <Home />}></Route>
           <Route path='/signup' element ={ <Signup />}></Route>
-          <Route path='/signin' element ={ <Signin  />}></Route>
-          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser } getAllPosts = { getAllPosts }/>}></Route>
+          <Route path='/signin' element ={ <Signin  setIsLogin = { setIsLogin }/>}></Route>
+          <Route path='/dashboard' element ={ <Dashboard getUser = { getUser } getAllPosts = { getAllPosts } isLogin = { isLogin }/>}></Route>
           <Route path='/profile' element ={ <ProfilePage getUser={ getUser }/>}></Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>

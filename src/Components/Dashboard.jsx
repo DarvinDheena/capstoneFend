@@ -5,9 +5,16 @@ import UserImage from './UserImage';
 import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
-function Dashboard({ getUser , getAllPosts }) {
+function Dashboard({ getUser , getAllPosts , isLogin}) {
   const [comment , setComment ] = useState('');
   const navigate = useNavigate();
+  console.log(isLogin);
+
+  
+  useEffect ( () => {
+    getUser();
+    getAllPosts();
+} ,[]);
 
   let  user = sessionStorage.getItem('user');
   user = JSON.parse(user);
@@ -53,15 +60,6 @@ function Dashboard({ getUser , getAllPosts }) {
     })
     navigate('/dashboard');
   }
-
-  useEffect ( () => {
-      getUser();
-      getAllPosts();
-  } ,[]);
-
-  
- 
-
   return (
     <div className='container'>
       <div className='row h-100'>
