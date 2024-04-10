@@ -28,10 +28,9 @@ function Dashboard({ getUser , isLogin}) {
 
   }
 
-  useEffect(()=>{
     getUser();
     getAllPosts();
-  },[])
+ 
   
 
   let  user = sessionStorage.getItem('user');
@@ -92,7 +91,9 @@ function Dashboard({ getUser , isLogin}) {
         <div className="col-6 h-post">
           <div className="p-3 py-4 bg-white">     
               {
-                posts.map(post=>{
+                posts ? 
+                <> {
+                  posts.map(post=>{
                   return(  
                     <>
                       <div className="d-flex align-items-center border-bottom border-secondary pb-2">
@@ -149,9 +150,13 @@ function Dashboard({ getUser , isLogin}) {
                       </div>
                     </div>
                   </div>
+                
                     </>
-                  )
-                })
+                      )
+                    })
+                  }
+                </> : <><h3> posts are loading ... please wait </h3> </>
+                
               }
           </div>
         </div>
