@@ -5,7 +5,7 @@ import UserImage from './UserImage';
 import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
-async function Dashboard({ getUser , isLogin}) {
+const  Dashboard =  ({ getUser })  => {
   const [comment , setComment ] = useState('');
   const navigate = useNavigate();
 
@@ -27,19 +27,6 @@ async function Dashboard({ getUser , isLogin}) {
     }
 
   }
-
-   await  getUser();
-   await  getAllPosts();
- 
-  
-
-  let  user = sessionStorage.getItem('user');
-  user = JSON.parse(user);
-  const picturePath = user.picturePath ;
-  let posts = sessionStorage.getItem('posts');
-  posts = JSON.parse(posts);  
-
-
   const  handleLike = async (id) => {    
 
    const userId = user._id ;
@@ -75,6 +62,14 @@ async function Dashboard({ getUser , isLogin}) {
     navigate('/dashboard');
   }
 
+  getAllPosts();
+
+  let  user = sessionStorage.getItem('user');
+  user = JSON.parse(user);
+  const picturePath = user.picturePath ;
+  let posts = sessionStorage.getItem('posts');
+  posts = JSON.parse(posts);  
+
 
   return (
     <div className='container'>
@@ -89,7 +84,9 @@ async function Dashboard({ getUser , isLogin}) {
           </div>
         </div>
         <div className="col-6 h-post">
-          <div className="p-3 py-4 bg-white">     
+          <div className="p-3 py-4 bg-white"> 
+          {
+            setTimeout(()=>{
               {
                 posts ? 
                 <> {
@@ -131,11 +128,9 @@ async function Dashboard({ getUser , isLogin}) {
                             {
                               posts.map(post=>{
                                 const comments = post.comments ;
-                                console.log(comments);
                                 return (
                                   <>
                                      { comments.map((comment ,index)=> {
-                                      console.log();
                                       return(
                                         <>
                                           <li key={index}> { comment }</li>
@@ -159,6 +154,9 @@ async function Dashboard({ getUser , isLogin}) {
                   }
                 </> : <><h3> posts are loading ... please wait </h3> </>
               }
+            },2000)
+          }    
+             
           </div>
         </div>
         {/* CREATE POST  */}
